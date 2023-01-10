@@ -1,5 +1,8 @@
 from django.urls import reverse_lazy
-from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
+from django.views.generic import (
+    ListView, DetailView,
+    CreateView, UpdateView, DeleteView
+)
 from django.contrib.auth.mixins import (
     LoginRequiredMixin,
     PermissionRequiredMixin,
@@ -48,7 +51,7 @@ class BlogUpdateView(LoginRequiredMixin, UpdateView):
         return super().dispatch(request, *args, **kwargs)
 
 
-class BlogDeleteView(LoginRequiredMixin, DetailView):
+class BlogDeleteView(LoginRequiredMixin, DeleteView):
     model = Blog
     template_name = 'blogs/blog_delete.html'
     success_url = reverse_lazy('blogs/blog_list')
