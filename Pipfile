@@ -1,0 +1,17 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+django = "==4.1.5"
+psycopg2-binary = "==2.9.5"
+python-dotenv = "0.21.0"
+django-crispy-forms = "==1.14.0"
+django-allauth = "==0.52.0"
+
+[dev-packages]
+
+[requires]
+python_version = "3.11"
+python_full_version = "3.11.1"
