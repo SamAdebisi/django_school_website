@@ -1,4 +1,5 @@
 from django.views.generic import TemplateView
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
 class HomePageView(TemplateView):
@@ -15,3 +16,16 @@ class AboutPageView(TemplateView):
 
 class ContactPageView(TemplateView):
     template_name = 'contact.html'
+
+
+class FaqsPageView(TemplateView):
+    template_name = 'faq_list.html'
+
+
+class PortfolioPageView(TemplateView):
+    template_name = 'portfolio.html'
+
+
+class MembershipPageView(LoginRequiredMixin, TemplateView):
+    template_name = 'membership.html'
+    login_url = 'account_login'

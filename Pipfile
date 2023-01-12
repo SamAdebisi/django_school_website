@@ -9,6 +9,7 @@ psycopg2-binary = "==2.9.5"
 python-dotenv = "0.21.0"
 django-crispy-forms = "==1.14.0"
 django-allauth = "==0.52.0"
+pillow = "==9.4.0"
 
 [dev-packages]
 

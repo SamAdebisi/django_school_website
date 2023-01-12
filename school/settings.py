@@ -55,6 +55,9 @@ INSTALLED_APPS = [
     'pages.apps.PagesConfig',
     'blogs.apps.BlogsConfig',
     'events.apps.EventsConfig',
+    'dashboards.apps.DashboardsConfig',
+    'courses.apps.CoursesConfig',
+    'staff.apps.StaffConfig',
 ]
 
 MIDDLEWARE = [
@@ -181,3 +184,6 @@ ACCOUNT_SESSION_REMEMBER = True
 ACCOUNT_SIGNUP_PASSWORD_ENTER_TWICE = True
 
 DEFAULT_FROM_EMAIL = 'admin@browngroupofschools'
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

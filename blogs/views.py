@@ -5,12 +5,12 @@ from django.views.generic import (
 )
 from django.contrib.auth.mixins import (
     LoginRequiredMixin,
-    PermissionRequiredMixin,
+    # PermissionRequiredMixin,
     PermissionDenied,
 )
 from django.db.models import Q
 
-from .models import Blog, Comment
+from .models import Blog
 
 
 class BlogListView(LoginRequiredMixin, ListView):
@@ -67,7 +67,7 @@ class BlogDeleteView(LoginRequiredMixin, DeleteView):
 class BlogSearchResultsListView(LoginRequiredMixin, ListView):
     model = Blog
     context_object_name = 'blog_list'
-    template_name = 'blogs/blog_search_results'
+    template_name = 'blogs/blog_search_results.html'
 
     def get_queryset(self):
         query = self.request.GET.get('q')
