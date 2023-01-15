@@ -12,7 +12,8 @@
 		<meta name="robots" content="nofollow noindex" />
 
 		<!-- DESCRIPTION -->
-		<meta name="description" content="A school of excellence and discipline, situated at Bode." />
+		<meta name="description" content="A school of excellence and discipline situated at Bode-Olude, Elega, Oke-Saje,
+		Abeokuta, Ogun State, Nigeria." />
 
 		<!-- OG -->
 		<meta property="og:title" content="Brown group of schools" />
@@ -81,14 +82,19 @@
 							</div>
 							<div class="topbar-right">
 								<ul>
-									<li>
+									<li class="mr-4">
 										<select class="header-lang-bx">
 											<option data-icon="flag flag-uk">English UK</option>
 											<option data-icon="flag flag-us">English US</option>
 										</select>
 									</li>
+									{% if user.is_authenticated %}
+										Welcome {{ user.email }}
+										<li><a class="p-2" href="{% url 'account_logout' %}">Log Out</a></li>
+									{% else %}
 									<li><a href="{% url 'account_login' %}">Log In</a></li>
 									<li><a href="{% url 'account_signup' %}">Sign Up</a></li>
+									{% endif %}
 								</ul>
 							</div>
 						</div>
@@ -99,7 +105,7 @@
 						<div class="container clearfix">
 							<!-- Header Logo ==== -->
 							<div class="menu-logo">
-								<a href="index.html"><img src="assets/images/logo-white.png" alt=""></a>
+								<a href="{% url 'home' %}"><img src="assets/images/logo-white.png" alt=""></a>
 							</div>
 							<!-- Mobile Nav Button ==== -->
 							<button class="navbar-toggler collapsed menuicon justify-content-end" type="button"
@@ -137,7 +143,7 @@
 							<!-- Navigation Menu ==== -->
 							<div class="menu-links navbar-collapse collapse justify-content-start" id="menuDropdown">
 								<div class="menu-logo">
-									<a href="index.html"><img src="assets/images/logo.png" alt=""></a>
+									<a href="{% url 'home' %}"><img src="assets/images/logo.png" alt=""></a>
 								</div>
 								<ul class="nav navbar-nav">
 									<li class="active"><a href="javascript:;">Home
@@ -163,8 +169,7 @@
 											<li class="add-menu-left">
 												<h5 class="menu-adv-title">Our Courses</h5>
 												<ul>
-													<li><a href="courses.html">Courses </a></li>
-													<li><a href="profile.html">Instructor Profile</a></li>
+													<li><a href="{% url 'course_list' %}">Courses </a></li>
 													<li><a href="{% url 'event_list' %}">Upcoming Event</a></li>
 													<li><a href="{% url 'membership' %}">Membership</a></li>
 												</ul>
@@ -199,7 +204,7 @@
 						<div class="container">
 							<div class="d-flex align-items-stretch">
 								<div class="pt-logo mr-auto">
-									<a href="index.html"><img src="assets/images/logo-white.png" alt="" /></a>
+									<a href="{% url 'home' %}"><img src="assets/images/logo-white.png" alt="" /></a>
 								</div>
 								<div class="pt-social-link">
 									<ul class="list-inline m-a0">
@@ -210,7 +215,11 @@
 									</ul>
 								</div>
 								<div class="pt-btn-join">
-									<a href="{% url 'account_login' %}" class="btn ">Join Now</a>
+									{% if user.is_authenticated %}
+										<p></p>
+									{% else %}
+										<a href="{% url 'account_login' %}" class="btn ">Join Now</a>
+									{% endif %}
 								</div>
 							</div>
 						</div>
@@ -266,9 +275,8 @@
 										<div class="widget footer_widget">
 											<h5 class="footer-title">Courses</h5>
 											<ul>
-												<li><a href="courses.html">Courses</a></li>
+												<li><a href="{% url 'course_list' %}">Courses</a></li>
 												<li><a href="{% url 'membership' %}">Membership</a></li>
-												<li><a href="profile.html">Instructor Profile</a></li>
 											</ul>
 										</div>
 									</div>
@@ -304,7 +312,7 @@
 					<div class="container">
 						<div class="row">
 							<div class="col-lg-12 col-md-12 col-sm-12 text-center"> <a target="_blank"
-									href="">Developed By: Azeez Adebisi</a></div>
+									href="https://www.linkedin.com/in/samadebisi/"> © Azeez Adebisi 2023</a></div>
 						</div>
 					</div>
 				</div>

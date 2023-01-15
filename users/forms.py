@@ -11,7 +11,7 @@ logger = logging.getLogger(__name__)
 class CustomUserCreationForm(UserCreationForm):
     class Meta(UserCreationForm.Meta):
         model = CustomUser
-        fields = ('email', 'date_of_birth',)
+        fields = ('email',)
 
     def send_email(self):
         logger.info(
@@ -32,4 +32,4 @@ class CustomUserChangeForm(UserChangeForm):
 
     class Meta:
         model = CustomUser
-        fields = ('email', 'date_of_birth',)
+        fields = ('email',)

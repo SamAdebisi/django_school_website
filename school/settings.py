@@ -35,20 +35,17 @@ ALLOWED_HOSTS = [os.getenv('ALLOWED_HOSTS')]
 
 # Application definition
 
-INSTALLED_APPS = [
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
-    'django.contrib.sites',
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+)
 
+INSTALLED_APPS = [
     # third party
-    'crispy_forms',
     'allauth',
     'allauth.account',
     # 'allauth.socialaccount',
+    'crispy_forms',
 
     # local
     'users.apps.UsersConfig',
@@ -58,7 +55,19 @@ INSTALLED_APPS = [
     'dashboards.apps.DashboardsConfig',
     'courses.apps.CoursesConfig',
     'staff.apps.StaffConfig',
+    'profiles.apps.ProfilesConfig',
+
+    # built-in
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'django.contrib.sites',
 ]
+
+SITE_ID = 1
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -166,24 +175,27 @@ AUTH_USER_MODEL = 'users.CustomUser'
 # django-crispy-forms
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
+ACCOUNT_USER_MODEL_USERNAME_FIELD = 'email'
+
 # django-allauth config
 LOGIN_REDIRECT_URL = 'home'
 ACCOUNT_LOGOUT_REDIRECT = 'home'
 
-SITE_ID = 1
-AUTHENTICATION_BACKENDS = (
-    'django.contrib.auth.backends.ModelBackend',
-    'allauth.account.auth_backends.AuthenticationBackend',
-)
+ACCOUNT_USERNAME_REQUIRED = False
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_UNIQUE_EMAIL = True
+
+ACCOUNT_SESSION_REMEMBER = None
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 # django-allauth settings
 LOGIN_URL = 'login'
-ACCOUNT_SESSION_REMEMBER = True
-ACCOUNT_SIGNUP_PASSWORD_ENTER_TWICE = True
 
-DEFAULT_FROM_EMAIL = 'admin@browngroupofschools'
+ACCOUNT_SIGNUP_PASSWORD_ENTER_TWICE = False
+
+DEFAULT_FROM_EMAIL = 'info@browngroupofschools'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
