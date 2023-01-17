@@ -33,9 +33,10 @@ class Course(models.Model):
 
 
 class Instructor(models.Model):
-    tutor = models.ManyToManyField(
+    tutor = models.ForeignKey(
         get_user_model(),
         verbose_name='Tutor',
+        on_delete=models.CASCADE,
     )
     course = models.ForeignKey(
         Course, on_delete=models.CASCADE,

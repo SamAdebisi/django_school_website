@@ -12,7 +12,8 @@ class Blog(models.Model):
         editable=False,
     )
     title = models.CharField(max_length=255)
-    author = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
+    author = models.ForeignKey(get_user_model(),
+                               on_delete=models.CASCADE)
     body = models.TextField()
     date = models.DateField(auto_now_add=True)
 
